@@ -171,19 +171,39 @@ int _26_removeDuplicates(vector<int>& nums) {
     return n + 1;
 }
 
-int main(int argc, const char * argv[]) {
-    vector<int> p = vector<int>(9, 0);
-    p[0] = 1;
-    p[1] = 1;
-    p[2] = 2;
-    p[3] = 2;
-    p[4] = 5;
-    p[5] = 4;
-    p[6] = 8;
-    p[7] = 3;
-//    p[8] = 7;
+/// 移除元素
+int _27_removeElement(vector<int>& nums, int val) {
+    int r = int(nums.size() - 1);
     
-    cout << _26_removeDuplicates(p);
+    int curosr = 0;
+    
+    for (int i = 0; i <= r; i++) {
+        if (nums[i] != val) {
+            nums[curosr] = nums[i];
+            curosr++;
+        }
+    }
+    
+    return curosr;
+}
+
+int main(int argc, const char * argv[]) {
+    vector<int> p = vector<int>(4, 0);
+    p[0] = 3;
+    p[1] = 2;
+    p[2] = 2;
+    p[3] = 3;
+    
+//    p[0] = 0;
+//    p[1] = 1;
+//    p[2] = 2;
+//    p[3] = 2;
+//    p[4] = 3;
+//    p[5] = 0;
+//    p[6] = 4;
+//    p[7] = 2;
+    
+    cout << _27_removeElement(p, 2);
     
     cout << "   " ;
     
