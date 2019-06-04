@@ -187,10 +187,48 @@ int _27_removeElement(vector<int>& nums, int val) {
     return curosr;
 }
 
+/// 第一个错误的版本
+bool isBadVersion(int version){
+    return version >= 2126753289;
+}
+int _278_firstBadVersion(int n) {
+    int l = 1, r = n, m = 0;
+    
+    while (l < r) {
+        m = l + (r - l) / 2;
+        
+        if (isBadVersion(m)){
+            r = m;
+        }
+        else{
+            l = m + 1;
+        }
+    }
+    
+    return l;
+}
+
+int maxSubArray(vector<int>& nums) {
+    
+    vector<int>::iterator it  = nums.begin();
+    int maxSum = *it;
+    int theSum = *it;
+    
+    for(it = it+1 ; it != nums.end(); it++){
+        theSum = max(theSum + *it, *it);
+        
+        if(theSum > maxSum)
+            maxSum = theSum;
+    }
+    
+    return maxSum;
+}
+
+//Line 10: Char 20: runtime error: signed integer overflow: 1063376694 + 2126753389 cannot be represented in type 'int' (solution.cpp)
 int main(int argc, const char * argv[]) {
     vector<int> p = vector<int>(4, 0);
-    p[0] = 3;
-    p[1] = 2;
+    p[0] = -1;
+    p[1] = 1;
     p[2] = 2;
     p[3] = 3;
     
@@ -203,7 +241,7 @@ int main(int argc, const char * argv[]) {
 //    p[6] = 4;
 //    p[7] = 2;
     
-    cout << _27_removeElement(p, 2);
+    cout << maxSubArray(p);
     
     cout << "   " ;
     
