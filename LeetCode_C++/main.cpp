@@ -187,11 +187,23 @@ int _27_removeElement(vector<int>& nums, int val) {
     return curosr;
 }
 
+/// 颠倒二进制位
+uint32_t _190_reverseBits(uint32_t n) {
+    uint32_t rv = 0;
+    for (int i = 0; i < 32; i++) {
+        rv <<= 1;
+        if (n >> i & 1) rv += 1;
+    }
+    
+    return rv;
+    
+}
+
 /// 位1的个数
-int _191_hammingWeight(uint32_t n) {
+uint32_t _191_hammingWeight(uint32_t n) {
     
     int c = 0;
-    while (n > 0) {
+    while (n) {
         if (n & 1) c += 1;
         n >>= 1;
     }
@@ -237,11 +249,11 @@ int maxSubArray(vector<int>& nums) {
 
 //Line 10: Char 20: runtime error: signed integer overflow: 1063376694 + 2126753389 cannot be represented in type 'int' (solution.cpp)
 int main(int argc, const char * argv[]) {
-    vector<int> p = vector<int>(4, 0);
-    p[0] = -1;
-    p[1] = 1;
-    p[2] = 2;
-    p[3] = 3;
+//    vector<int> p = vector<int>(4, 0);
+//    p[0] = -1;
+//    p[1] = 1;
+//    p[2] = 2;
+//    p[3] = 3;
     
 //    p[0] = 0;
 //    p[1] = 1;
@@ -252,7 +264,7 @@ int main(int argc, const char * argv[]) {
 //    p[6] = 4;
 //    p[7] = 2;
     
-    cout << maxSubArray(p);
+    cout << _190_reverseBits(4294967293);
     
     cout << "   " ;
     
