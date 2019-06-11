@@ -187,6 +187,17 @@ int _27_removeElement(vector<int>& nums, int val) {
     return curosr;
 }
 
+/// 位1的个数
+int _191_hammingWeight(uint32_t n) {
+    
+    int c = 0;
+    while (n > 0) {
+        if (n & 1) c += 1;
+        n >>= 1;
+    }
+    return c;
+}
+
 /// 第一个错误的版本
 bool isBadVersion(int version){
     return version >= 2126753289;
