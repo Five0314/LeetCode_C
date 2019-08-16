@@ -13,6 +13,12 @@
 
 using namespace std;
 
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
 /// 无重复字符的最长子串
 long _3_lengthOfLongestSubstring(string str){
     long c = str.length();
@@ -245,6 +251,45 @@ int maxSubArray(vector<int>& nums) {
     }
     
     return maxSum;
+}
+
+/// 环形链表
+bool _141(ListNode *head) {
+    ListNode *f = head;
+    ListNode *s = head;
+    
+    while (f && f->next) {
+        f = f->next->next;
+        s = s->next;
+        
+        if (f == s)  return true;
+    };
+    
+    return false;
+}
+
+/// 环形链表
+ListNode * _142(ListNode *head) {
+    ListNode *f = head;
+    ListNode *s = head;
+    
+    while (f && f->next) {
+        f = f->next->next;
+        s = s->next;
+        
+        if (f == s) { // 存在环
+            f = head;
+            
+            while (f != s) {
+                f = f->next;
+                s = s->next;
+            }
+            
+            return f;
+        }
+    };
+    
+    return NULL;
 }
 
 //Line 10: Char 20: runtime error: signed integer overflow: 1063376694 + 2126753389 cannot be represented in type 'int' (solution.cpp)
